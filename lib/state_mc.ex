@@ -45,7 +45,7 @@ defmodule StateMc do
     defmacro defevent(event, options, callback) do
       quote do
         alias Ecto.Changeset
-        def unquote(:"#{event}!")(record) do
+        def unquote(:"#{event}")(record) do
           %{from: from_states, to: to_state} = unquote(options)
             record
             |> Changeset.change(%{smc_column() => Atom.to_string(to_state)})
