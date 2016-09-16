@@ -14,7 +14,7 @@ defmodule StateMc do
           end
         end
 
-        def validate_state_transition changeset, from_states, to_state do
+        def validate_state_transition(changeset, from_states, to_state) do
           cr_state = current_state(changeset.data)
           if Enum.member?(from_states, cr_state) && state_defined?(to_state) do
             changeset
@@ -47,10 +47,10 @@ defmodule StateMc do
         alias Ecto.Changeset
         def unquote(:"#{event}")(record) do
           %{from: from_states, to: to_state} = unquote(options)
-            record
-            |> Changeset.change(%{smc_column() => Atom.to_string(to_state)})
-            |> validate_state_transition(from_states, to_state)
-            |> unquote(callback).()
+          record
+          |> Changeset.change(%{smc_column() => Atom.to_string(to_state)})
+          |> validate_state_transition(from_states, to_state)
+          |> unquote(callback).()
         end
 
         def unquote(:"can_#{event}?")(record) do
