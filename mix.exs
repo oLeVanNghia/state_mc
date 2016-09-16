@@ -9,17 +9,25 @@ defmodule StateMc.Mixfile do
      start_permanent: Mix.env == :prod,
      deps: deps(),
      package: package(),
-     description: description()
+     description: description(),
+     elixirc_paths: elixirc_paths(Mix.env)
     ]
   end
 
+  defp elixirc_paths(:test), do: ["lib", "test/dummy"]
+  defp elixirc_paths(_), do: ["lib"]
+    
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: app_list(Mix.env)]
   end
 
+  defp app_list(:test), do: app_list ++ [:ecto, :postgrex, :ex_machina]
+  defp app_list(_), do: app_list
+  defp app_list, do: [:logger]
+    
   # Dependencies can be Hex packages:
   #
   #   {:mydep, "~> 0.3.0"}
@@ -31,7 +39,10 @@ defmodule StateMc.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:ecto, ">= 2.0.0", only: [:test]}
+      {:ecto, ">= 2.0.0"},
+      {:postgrex,   ">= 0.0.0", only: :test},
+      {:ex_machina, "~> 1.0.0", only: :test},
+      {:ex_spec,    "~> 2.0.0", only: :test}
     ]
   end
 
