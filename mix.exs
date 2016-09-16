@@ -8,7 +8,8 @@ defmodule StateMc.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps(),
-     package: package
+     package: package(),
+     description: description()
     ]
   end
 
@@ -36,10 +37,16 @@ defmodule StateMc.Mixfile do
 
   defp package do
     [
-      files: ["lib", "mix.exs", "README", "LICENSE*"],
+      files: ["lib", "mix.exs", "README.md", "LICENSE*"],
       maintainers: ["Nghia Le Van"],
       licenses: ["MIT"],
       links: %{"Github" => "git@github.com:leogi/state_mc.git"}
     ]
+  end
+
+  defp description do
+    """
+    StateMachine for Ecto
+    """
   end
 end
