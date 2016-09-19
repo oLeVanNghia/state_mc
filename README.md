@@ -3,7 +3,7 @@ State machine pattern in Ecto.
 
 Example:
 
-```
+```elixir
 defmodule Example.User do
   use Example.Web, :model
 
@@ -29,7 +29,7 @@ end
 
 ## How to run?
 
-```
+```elixir
 user = Example.Repo.get(Example.User, 1)
 Example.User.current_state(user) # => get current state
 Example.User.can_approve?(user)  # => check event approve
