@@ -52,7 +52,7 @@ defmodule StateMc.Mixfile do
       files: ["lib", "mix.exs", "README.md", "LICENSE*"],
       maintainers: ["Nghia Le Van"],
       licenses: ["MIT"],
-      links: %{"Github" => "git@github.com:leogi/state_mc.git"}
+      links: %{"Github" => "https://github.com/leogi/state_mc"}
     ]
   end
 
