@@ -1,8 +1,13 @@
 # State Machine for Ecto
+State machine pattern in Ecto.
+
+Example:
 
 ```
 defmodule Example.User do
   use Example.Web, :model
+
+  import StateMc.EctoSm
 
   schema "users" do
     field :state, :string, default: "waiting"
@@ -11,11 +16,11 @@ defmodule Example.User do
   statemc :state do
     defstate [:waiting, :approved, :rejected]
     defevent :approve, %{from: [:waiting, :rejected], to: :approved}, fn(changeset) ->
-      lr = changeset
+      changeset
       |> Example.Repo.update()
     end
     defevent :reject, %{from: [:waiting, :approved], to: :rejected}, fn(changeset) ->
-      lr = changeset
+      changeset
       |> Example.Repo.update()
     end
   end
@@ -29,8 +34,8 @@ user = Example.Repo.get(Example.User, 1)
 Example.User.current_state(user) # => get current state
 Example.User.can_approve?(user)  # => check event approve
 Example.User.can_reject?(user)   # => check event reject
-Example.User.approve(user) |> Example.Repo.update      # => call event approve to change state to approved
-Example.User.reject(user)  |> Example.Repo.update      # => call event reject to change state to approved
+Example.User.approve(user)       # => call event approve to change state to approved
+Example.User.reject(user)        # => call event reject to change state to approved
 ```
 
 ## Installation
