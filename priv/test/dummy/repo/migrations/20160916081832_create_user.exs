@@ -4,8 +4,6 @@ defmodule Dummy.Repo.Migrations.CreateUser do
   def change do
     create table(:users) do
       add :state, :string
-
-      timestamps()
     end
 
   end
