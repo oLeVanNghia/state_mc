@@ -1,6 +1,19 @@
 # State Machine for Ecto
 State machine pattern in Ecto.
 
+## Installation
+
+The package can be installed as:
+
+  1. Add `state_mc` to your list of dependencies in `mix.exs`:
+
+    ```elixir
+    def deps do
+      [{:state_mc, "~> 0.1.0"}]
+    end
+    ```
+
+## How to use?
 Example:
 
 ```elixir
@@ -38,23 +51,4 @@ Example.User.approve(user)       # => call event approve to change state to appr
 Example.User.reject(user)        # => call event reject to change state to rejected
 ```
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
-  1. Add `state_mc` to your list of dependencies in `mix.exs`:
-
-    ```elixir
-    def deps do
-      [{:state_mc, "~> 0.1.0"}]
-    end
-    ```
-
-  2. Ensure `state_mc` is started before your application:
-
-    ```elixir
-    def application do
-      [applications: [:state_mc]]
-    end
-    ```
 
