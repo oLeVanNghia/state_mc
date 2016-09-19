@@ -42,7 +42,8 @@ defmodule StateMc.Mixfile do
       {:ecto, ">= 2.0.0"},
       {:postgrex,   ">= 0.0.0", only: :test},
       {:ex_machina, "~> 1.0.0", only: :test},
-      {:ex_spec,    "~> 2.0.0", only: :test}
+      {:ex_spec,    "~> 2.0.0", only: :test},
+      {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 
