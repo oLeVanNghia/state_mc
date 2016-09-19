@@ -35,7 +35,7 @@ Example.User.current_state(user) # => get current state
 Example.User.can_approve?(user)  # => check event approve
 Example.User.can_reject?(user)   # => check event reject
 Example.User.approve(user)       # => call event approve to change state to approved
-Example.User.reject(user)        # => call event reject to change state to approved
+Example.User.reject(user)        # => call event reject to change state to rejected
 ```
 
 ## Installation
